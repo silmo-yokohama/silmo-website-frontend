@@ -1,0 +1,67 @@
+{
+  "root": true,
+  "extends": ["@nuxtjs/eslint-config-typescript", "plugin:vue/vue3-recommended", "prettier"],
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    // Vue関連
+    "vue/multi-word-component-names": "off",
+    "vue/no-multiple-template-root": "off",
+    "vue/require-default-prop": "off",
+    "vue/no-v-html": "off",
+
+    // TypeScript関連
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": "warn",
+
+    // 一般的なルール
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "no-debugger": "warn",
+    "no-unused-vars": "off",
+    "camelcase": ["error", { "properties": "never" }],
+
+    // コードスタイル
+    "arrow-body-style": ["error", "as-needed"],
+    "curly": ["error", "all"],
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowShortCircuit": true,
+        "allowTernary": true
+      }
+    ],
+
+    // 論理演算子の最適化ルール
+    "no-extra-boolean-cast": "error",
+    "no-constant-binary-expression": "error",
+    "no-constant-condition": ["error", { "checkLoops": false }],
+    "no-extra-parens": [
+      "error",
+      "all",
+      {
+        "nestedBinaryExpressions": false,
+        "enforceForArrowConditionals": false
+      }
+    ],
+    "no-unneeded-ternary": ["error", { "defaultAssignment": false }]
+  },
+  "overrides": [
+    {
+      "files": ["*.vue"],
+      "rules": {
+        "no-undef": "off"
+      }
+    }
+  ]
+}
