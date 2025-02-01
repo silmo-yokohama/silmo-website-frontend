@@ -1,3 +1,5 @@
 silmo
 nuxt
 nuxtjs
+autodocs
+viewports
