@@ -2,14 +2,15 @@
 
 ## 目次
 
-- [Prettier](#prettier)
-- [ESLint](#eslint)
-- [Tailwind CSS](#tailwind-css)
-- [Vitest](#vitest)
-- [TypeScript](#typescript)
-- [Storybook](#storybook)
-- [VSCode設定](#vscode設定)
-- [その他の設定](#その他の設定)
+- [1. Prettier](#prettier)
+- [2. ESLint](#eslint)
+- [3. Tailwind CSS](#tailwind-css)
+- [4. TypeScript](#typescript)
+- [5. Vitest](#vitest)
+- [6. Storybook](#storybook)
+- [7. GitHooks設定](#githooks設定)
+- [8. VSCode設定](#vscode-設定)
+- [9. その他の設定](#その他の設定)
 
 ## Prettier
 
@@ -182,6 +183,32 @@ module.exports = {
 }
 ```
 
+## 4. TypeScript
+
+### インストール
+
+```bash
+npm install -D typescript @types/node
+```
+
+### 基本設定 (tsconfig.json)
+
+```json
+{
+  "extends": "./.nuxt/tsconfig.json"
+}
+```
+
+### package.jsonスクリプト
+
+```json
+{
+  "scripts": {
+    "type-check": "tsc --noEmit"
+  }
+}
+```
+
 ## Vitest
 
 ### インストール
@@ -313,7 +340,62 @@ const preview: Preview = {
 export default preview;
 ```
 
-## VSCode設定
+## 7. GitHooks設定
+
+### インストール
+
+```bash
+npm install -D husky lint-staged
+npm run prepare
+```
+
+### Husky設定 (.husky/pre-commit)
+
+```bash
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "🏃 Running pre-commit checks..."
+
+# TypeScriptの型チェック
+echo "📝 Running TypeScript type check..."
+npm run type-check || {
+  echo "❌ TypeScript type check failed. Please fix the errors and try again."
+  exit 1
+}
+
+# lint-stagedの実行
+echo "🔍 Running lint-staged..."
+npx lint-staged || {
+  echo "❌ lint-staged failed. Please fix the errors and try again."
+  exit 1
+}
+
+echo "✅ All checks passed!"
+```
+
+### lint-staged設定 (.lintstagedrc)
+
+```json
+{
+  "*.{js,jsx,ts,tsx,vue}": ["prettier --write", "eslint --fix", "tsc --noEmit"],
+  "*.{css,scss}": ["prettier --write"],
+  "*.{json,md}": ["prettier --write"]
+}
+```
+
+### package.jsonスクリプト
+
+```json
+{
+  "scripts": {
+    "prepare": "husky",
+    "type-check": "tsc --noEmit"
+  }
+}
+```
+
+## 8. VSCode設定
 
 ### 推奨拡張機能 (.vscode/extensions.json)
 
@@ -394,7 +476,7 @@ export default preview;
 }
 ```
 
-## その他の設定
+## 9. その他の設定
 
 ### スペルチェック設定 (.cspell/cspell.cjs)
 

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
-import TestComponent from '~/components/ui/TestComponent.vue';
+import { UiTestComponent } from '#components';
 /**
  * Exampleコンポーネントのストーリー定義
  *
@@ -9,9 +9,9 @@ import TestComponent from '~/components/ui/TestComponent.vue';
  */
 const meta = {
   title: 'Components/Example',
-  component: TestComponent,
+  component: UiTestComponent,
   tags: ['autodocs'],
-} satisfies Meta<typeof TestComponent>;
+} satisfies Meta<typeof UiTestComponent>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

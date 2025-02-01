@@ -1,0 +1,20 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "🏃 コミット前チェックを開始します..."
+
+# TypeScriptの型チェック
+echo "📝 TypeScriptの型チェックを実行中..."
+npm run type-check --pretty || {
+  echo "❌ TypeScriptの型チェックでエラーが発生しました。エラーを修正してから再度コミットしてください。"
+  exit 1
+}
+
+# lint-stagedの実行
+echo "🔍 コードの整形とリントを実行中..."
+npx lint-staged || {
+  echo "❌ コード整形またはLinterでエラーが発生しました。エラーを修正してから再度コミットしてください。"
+  exit 1
+}
+
+echo "✅ すべてのチェックが完了しました！"

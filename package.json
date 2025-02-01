@@ -17,7 +17,9 @@
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepare": "husky",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "nuxt": "^3.15.4",
@@ -55,6 +57,8 @@
     "eslint-plugin-storybook": "^0.11.2",
     "eslint-plugin-vue": "^9.32.0",
     "happy-dom": "^16.8.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
     "postcss": "^8.5.1",
     "prettier": "^3.4.2",
     "prettier-plugin-vue": "^1.1.6",
