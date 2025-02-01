@@ -1,14 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
-
-const ExampleComponent = defineComponent({
-  name: 'ExampleComponent',
-  setup() {
-    return {
-      message: 'Hello, World!',
-    };
-  },
-});
-
+import TestComponent from '~/components/ui/TestComponent.vue';
 /**
  * Exampleコンポーネントのストーリー定義
  *
@@ -18,9 +9,9 @@ const ExampleComponent = defineComponent({
  */
 const meta = {
   title: 'Components/Example',
-  component: ExampleComponent,
+  component: TestComponent,
   tags: ['autodocs'],
-} satisfies Meta<typeof ExampleComponent>;
+} satisfies Meta<typeof TestComponent>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

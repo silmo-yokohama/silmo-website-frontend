@@ -30,7 +30,6 @@ const config: StorybookConfig = {
     builder: '@storybook/builder-vite',
   },
   typescript: {
-    reactDocgen: 'react-docgen',
     skipBabel: true,
     check: false,
   },
