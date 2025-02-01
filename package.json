@@ -12,7 +12,10 @@
     "lint": "eslint --ext .js,.ts,.vue .",
     "lint:fix": "eslint --ext .js,.ts,.vue . --fix",
     "lint:check": "eslint --ext .js,.ts,.vue .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
     "nuxt": "^3.15.4",
@@ -21,13 +24,18 @@
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@testing-library/vue": "^8.1.0",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
+    "@vitest/coverage-v8": "^3.0.4",
+    "@vue/test-utils": "^2.4.6",
     "cspell": "^8.17.3",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-vue": "^9.32.0",
+    "happy-dom": "^16.8.1",
     "prettier": "^3.4.2",
-    "prettier-plugin-vue": "^1.1.6"
+    "prettier-plugin-vue": "^1.1.6",
+    "vitest": "^3.0.4"
   }
 }

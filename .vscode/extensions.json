@@ -17,6 +17,8 @@
     "aaron-bond.better-comments",
     "mechatroner.rainbow-csv",
     "mikestead.dotenv",
-    "redhat.vscode-yaml"
+    "redhat.vscode-yaml",
+    "vitest.explorer",
+    "vitest.vitest-explorer"
   ]
 }
