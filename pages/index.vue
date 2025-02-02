@@ -12,7 +12,7 @@
 
       <div class="w-full">
         <div class="max-w-container mx-auto px-4">
-          <h1 class="max-w-[800px] text-6xl font-oswald">Web <span class="text-primary">Design</span> + <span class="text-secondary">Development</span></h1>
+          <h1 class="max-w-[800px] text-6xl font-oswald">Web <span class="text-primary">D</span>esign + <span class="text-secondary">D</span>evelopment</h1>
           <p class="mt-8 max-w-[600px] text-lg">WEBアプリ開発 / WEBサイト制作 / LP制作 / デザイン制作</p>
         </div>
       </div>
@@ -23,7 +23,7 @@
       <div class="max-w-container mx-auto px-4">
         <h2 class="font-mono">Selected Works</h2>
         <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <NuxtLink
+          <nuxt-link
             v-for="(work, i) in works"
             :key="i"
             to="/works/1"
@@ -41,23 +41,23 @@
             <div class="mt-4 flex items-center text-primary">
               <span class="group-hover:translate-x-2 transition-transform duration-200"> View Project </span>
             </div>
-          </NuxtLink>
+          </nuxt-link>
         </div>
 
         <!-- Works & Portfolio Links -->
         <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <NuxtLink
+          <nuxt-link
             to="/works"
             class="w-full sm:w-auto px-8 py-4 border border-black/10 dark:border-white/10 rounded-lg hover:border-primary hover:text-primary transition-colors duration-200 text-center"
           >
             View All Works
-          </NuxtLink>
-          <NuxtLink
+          </nuxt-link>
+          <nuxt-link
             to="/portfolio"
             class="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors duration-200 text-center"
           >
             View Portfolio
-          </NuxtLink>
+          </nuxt-link>
         </div>
       </div>
     </section>
@@ -67,12 +67,12 @@
       <div class="max-w-container mx-auto px-4">
         <h2 class="font-mono">Get in Touch</h2>
         <p class="mt-4 max-w-[600px] text-lg">新しいプロジェクトのご相談やお問い合わせをお待ちしています。 まずはお気軽にメッセージをお送りください。</p>
-        <NuxtLink
+        <nuxt-link
           to="/contact"
           class="mt-8 inline-block border border-black/10 dark:border-white/10 rounded-lg px-6 py-3 hover:border-primary hover:text-primary transition-colors duration-200"
         >
           Contact Me
-        </NuxtLink>
+        </nuxt-link>
       </div>
     </section>
 

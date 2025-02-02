@@ -6,8 +6,29 @@
   html {
     @apply antialiased;
   }
+
   body {
-    @apply bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100;
+    @apply bg-[#FAFAFA] text-[#1A1A1A] dark:bg-dark dark:text-[#F5F5F5];
+  }
+
+  h1 {
+    @apply text-[3.5rem] font-semibold tracking-tight leading-tight;
+  }
+
+  h2 {
+    @apply text-[2.5rem] font-medium leading-tight;
+  }
+
+  h3 {
+    @apply text-[1.75rem] font-medium leading-tight;
+  }
+
+  p {
+    @apply text-base leading-relaxed;
+  }
+
+  small {
+    @apply text-sm;
   }
 }
 

@@ -2,7 +2,7 @@
   <div class="min-h-screen">
     <common-header />
     <main class="font-zen">
-      <NuxtPage />
+      <nuxt-page />
     </main>
   </div>
 </template>

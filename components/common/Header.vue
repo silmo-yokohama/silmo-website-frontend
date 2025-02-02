@@ -1,32 +1,21 @@
 <template>
   <div>
     <!-- ヘッダー（最前面に表示） -->
-    <header class="fixed top-0 left-0 w-full h-[60px] md:h-[50px] border-b border-black/10 dark:border-white/10 bg-[#FAFAFA] dark:bg-dark z-[100]">
+    <header class="fixed top-0 left-0 w-full h-[70px] md:h-[80px] border-b border-black/10 dark:border-white/10 bg-[#FAFAFA] dark:bg-dark z-[100]">
       <div class="max-w-container mx-auto px-4 h-full flex items-center justify-between">
         <!-- ハンバーガーメニューボタン -->
-        <button class="p-2 hover:text-primary transition-colors duration-200" aria-label="Toggle menu" @click="isMenuOpen = !isMenuOpen">
-          <div class="w-6 h-5 relative flex flex-col justify-between">
-            <span :class="['w-full h-0.5 bg-current transition-all duration-300', isMenuOpen ? 'rotate-45 translate-y-2' : '']"></span>
-            <span :class="['w-full h-0.5 bg-current transition-opacity duration-300', isMenuOpen ? 'opacity-0' : '']"></span>
-            <span :class="['w-full h-0.5 bg-current transition-all duration-300', isMenuOpen ? '-rotate-45 -translate-y-2' : '']"></span>
-          </div>
-        </button>
+        <ui-button-hamburger-button :is-menu-open="isMenuOpen" :set-is-menu-open="(state) => (isMenuOpen = state)" />
 
         <!-- ロゴ（中央寄せ） -->
-        <NuxtLink to="/" class="absolute left-1/2 -translate-x-1/2 text-xl font-medium"> Portfolio </NuxtLink>
+        <nuxt-link to="/" class="absolute left-1/2 -translate-x-1/2 text-xl font-medium"> <ui-images-top-logo /> </nuxt-link>
 
         <!-- カラーモードトグル -->
-        <ClientOnly>
-          <button class="p-2 hover:text-primary transition-colors duration-200" @click="toggleColorMode">
-            <span v-if="colorMode.value === 'dark'">🌞</span>
-            <span v-else>🌙</span>
-          </button>
-        </ClientOnly>
+        <ui-button-theme-button />
       </div>
     </header>
 
     <!-- フルスクリーンメニュー -->
-    <Transition
+    <transition
       enter-active-class="transition-all duration-300 ease-out"
       enter-from-class="opacity-0"
       enter-to-class="opacity-100"
@@ -37,7 +26,7 @@
       <div v-show="isMenuOpen" class="fixed inset-0 bg-[#FAFAFA] dark:bg-dark flex flex-col z-50">
         <!-- メインナビゲーション -->
         <nav class="flex-1 flex flex-col items-center justify-center">
-          <TransitionGroup
+          <transition-group
             tag="div"
             class="space-y-8"
             enter-active-class="transition-all duration-300 ease-out"
@@ -47,7 +36,7 @@
             leave-from-class="opacity-100 translate-y-0"
             leave-to-class="opacity-0 -translate-y-4"
           >
-            <NuxtLink
+            <nuxt-link
               v-for="(item, index) in navItems"
               :key="item.path"
               :to="item.path"
@@ -56,8 +45,8 @@
               @click="isMenuOpen = false"
             >
               {{ item.label }}
-            </NuxtLink>
-          </TransitionGroup>
+            </nuxt-link>
+          </transition-group>
         </nav>
 
         <!-- メニューフッター -->
@@ -94,17 +83,12 @@
           </div>
         </div>
       </div>
-    </Transition>
+    </transition>
   </div>
 </template>
 
 <script setup lang="ts">
-  const colorMode = useColorMode();
   const isMenuOpen = ref(false);
-
-  const toggleColorMode = () => {
-    colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark';
-  };
 
   const navItems = [
     { label: 'Profile', path: '/profile' },
