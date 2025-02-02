@@ -1,10 +1,13 @@
 <script setup lang="ts">
   const props = defineProps<{
     class?: string;
+    disabled?: boolean;
+    onClick?: () => void;
   }>();
 
   const mergedClasses = mergeClassNames(
     'inline-block border border-black/10 dark:border-white/10 rounded-lg px-6 py-3 hover:border-primary hover:text-primary transition-colors duration-200',
+    props.disabled ? 'is-disabled' : '',
     props.class || ''
   );
 
@@ -17,7 +20,7 @@
 </script>
 
 <template>
-  <button :class="mergedClasses" v-bind="filteredAttrs">
+  <button :class="mergedClasses" v-bind="filteredAttrs" :disabled="props.disabled || false" @click="props.onClick || null">
     <slot />
   </button>
 </template>
