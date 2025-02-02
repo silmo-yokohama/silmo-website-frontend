@@ -52,9 +52,11 @@ export default {
           900: '#764F05',
           950: '#633F04',
         },
+        dark: '#0A1017',
       },
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['Inter', 'sans-serif', ...defaultTheme.fontFamily.sans],
+        mono: ['JetBrains Mono', 'monospace', ...defaultTheme.fontFamily.mono],
       },
       animation: {
         'fade-in': 'fade-in 0.5s ease-in',
@@ -69,6 +71,13 @@ export default {
           '0%': { opacity: '1' },
           '100%': { opacity: '0' },
         },
+      },
+      maxWidth: {
+        container: '1200px',
+      },
+      padding: {
+        'section-desktop': '6rem',
+        'section-mobile': '3rem',
       },
     },
   },

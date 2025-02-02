@@ -1,16 +1,8 @@
 <template>
-  <div>
-    <UiTestComponent />
+  <div class="min-h-screen">
+    <common-header />
+    <main>
+      <NuxtPage />
+    </main>
   </div>
 </template>
-
-<script setup>
-  useHead({
-    link: [
-      {
-        rel: 'stylesheet',
-        href: 'https://rsms.me/inter/inter.css',
-      },
-    ],
-  });
-</script>
