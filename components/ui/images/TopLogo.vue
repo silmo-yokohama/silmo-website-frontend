@@ -6,5 +6,5 @@
 </script>
 
 <template>
-  <img class="w-24 md:w-28" :src="colorMode.value === 'dark' ? WhiteLogo : BlackLogo" alt="Top Logo" />
+  <img class="w-24 md:w-28" :src="colorMode.value !== 'dark' ? BlackLogo : WhiteLogo" alt="Top Logo" />
 </template>
