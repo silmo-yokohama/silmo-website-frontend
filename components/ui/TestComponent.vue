@@ -1,7 +1,27 @@
 <template>
-  <div class="p-4">
-    <h1 class="text-primary-600 text-2xl font-bold">Tailwind Test</h1>
-    <p class="text-secondary-600 mt-2">This is a test of Tailwind CSS configuration.</p>
-    <button class="mt-4 bg-primary-500 text-white px-4 py-2 rounded hover:bg-primary-600 transition-colors">Test Button</button>
+  <div class="test-component">
+    <h1>SCSS Test</h1>
+    <p>This is a test of SCSS configuration.</p>
   </div>
 </template>
+
+<style lang="scss">
+  .test-component {
+  padding: 1rem;
+  
+  h1 {
+    color: $primary-color;
+    font-size: 1.5rem;
+    font-weight: bold;
+    
+    @include mq(md) {
+      font-size: 2rem;
+    }
+  }
+  
+  p {
+    color: $secondary-color;
+    margin-top: 0.5rem;
+  }
+}
+</style>

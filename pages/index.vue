@@ -1,80 +1,63 @@
+<script setup lang="ts">
+  definePageMeta({
+    layout: 'default',
+  });
+
+  const works = [
+    {
+      title: 'E-commerce Platform',
+      description: 'Next.js と Supabase を使用したモダンなECサイト。',
+      category: 'Web App',
+    },
+    {
+      title: 'Corporate Website',
+      description: 'アニメーションと高いパフォーマンスを両立した企業サイト。',
+      category: 'Website',
+    },
+    {
+      title: 'Fitness Tracking App',
+      description: 'React Native で開発したクロスプラットフォームアプリ。',
+      category: 'Mobile App',
+    },
+    {
+      title: 'Design System',
+      description: 'コンポーネントライブラリとデザインガイドライン。',
+      category: 'Design',
+    },
+  ];
+</script>
+
 <template>
   <div class="min-h-screen pt-[60px] md:pt-[50px]">
     <!-- Hero Section -->
-    <section class="relative min-h-[calc(100vh-60px)] md:min-h-[calc(100vh-50px)] flex items-center">
-      <!-- 背景画像 -->
-      <div class="absolute inset-0 -z-10">
-        <div class="absolute inset-0 bg-[#FAFAFA]/90 dark:bg-dark/90"></div>
-        <div
-          class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2064&auto=format&fit=crop')] bg-center bg-cover opacity-10"
-        ></div>
-      </div>
-
-      <div class="w-full">
-        <div class="max-w-container mx-auto px-4">
-          <h1 class="max-w-[800px] text-6xl font-oswald">Web <span class="text-primary">D</span>esign + <span class="text-secondary">D</span>evelopment</h1>
-          <p class="mt-8 max-w-[600px] text-lg">WEBアプリ開発 / WEBサイト制作 / LP制作 / デザイン制作</p>
-        </div>
-      </div>
-    </section>
-
+    <ui-hero-section />
     <!-- Featured Works -->
-    <section class="py-section-mobile md:py-section-desktop border-t border-black/10 dark:border-white/10">
-      <div class="max-w-container mx-auto px-4">
-        <h2 class="font-mono">Selected Works</h2>
-        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <nuxt-link
-            v-for="(work, i) in works"
-            :key="i"
-            to="/works/1"
-            class="group border border-black/10 dark:border-white/10 rounded-2xl p-6 hover:border-primary transition-colors duration-200"
-          >
-            <div class="flex items-center gap-2">
-              <span :class="['px-2 py-1 text-xs rounded-md', categoryColors[work.category as keyof typeof categoryColors]]">
-                {{ work.category }}
-              </span>
-            </div>
-            <h3 class="mt-4 text-xl">{{ work.title }}</h3>
-            <p class="mt-2 text-black/60 dark:text-white/60">
-              {{ work.description }}
-            </p>
-            <div class="mt-4 flex items-center text-primary">
-              <span class="group-hover:translate-x-2 transition-transform duration-200"> View Project </span>
-            </div>
-          </nuxt-link>
-        </div>
-
-        <!-- Works & Portfolio Links -->
-        <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <nuxt-link
-            to="/works"
-            class="w-full sm:w-auto px-8 py-4 border border-black/10 dark:border-white/10 rounded-lg hover:border-primary hover:text-primary transition-colors duration-200 text-center"
-          >
-            View All Works
-          </nuxt-link>
-          <nuxt-link
-            to="/portfolio"
-            class="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors duration-200 text-center"
-          >
-            View Portfolio
-          </nuxt-link>
-        </div>
+    <common-section>
+      <common-section-title>Selected Works</common-section-title>
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <common-list-item
+          v-for="work in works"
+          :key="work.title"
+          :to="'/works/1'"
+          :title="work.title"
+          :description="work.description"
+          :category="work.category"
+        />
       </div>
-    </section>
+
+      <!-- Works & Portfolio Links -->
+      <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 flex-1">
+        <common-link to="/works" class="w-full sm:w-60 text-center"> 全ての実績 </common-link>
+        <common-link to="/portfolio" class="w-full sm:w-60 text-center"> 全てのポートフォリオ </common-link>
+      </div>
+    </common-section>
 
     <!-- Contact -->
-    <section class="py-section-mobile md:py-section-desktop border-t border-black/10 dark:border-white/10">
-      <div class="max-w-container mx-auto px-4">
-        <h2 class="font-mono">Get in Touch</h2>
-        <p class="mt-4 max-w-[600px] text-lg">新しいプロジェクトのご相談やお問い合わせをお待ちしています。 まずはお気軽にメッセージをお送りください。</p>
-        <nuxt-link
-          to="/contact"
-          class="mt-8 inline-block border border-black/10 dark:border-white/10 rounded-lg px-6 py-3 hover:border-primary hover:text-primary transition-colors duration-200"
-        >
-          Contact Me
-        </nuxt-link>
-      </div>
-    </section>
+    <common-section>
+      <common-section-title>Get in Touch</common-section-title>
+      <p class="mt-4 max-w-[600px] text-lg">新しいプロジェクトのご相談やお問い合わせをお待ちしています。 まずはお気軽にメッセージをお送りください。</p>
+      <common-link class="mt-8" to="/contact"> Contact Me </common-link>
+    </common-section>
 
     <!-- Footer -->
     <footer class="py-8 border-t border-black/10 dark:border-white/10">
@@ -116,39 +99,3 @@
     </footer>
   </div>
 </template>
-
-<script setup lang="ts">
-  definePageMeta({
-    layout: 'default',
-  });
-
-  const categoryColors = {
-    'Web App': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100',
-    Website: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100',
-    'Mobile App': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100',
-    Design: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-100',
-  };
-
-  const works = [
-    {
-      title: 'E-commerce Platform',
-      description: 'Next.js と Supabase を使用したモダンなECサイト。',
-      category: 'Web App',
-    },
-    {
-      title: 'Corporate Website',
-      description: 'アニメーションと高いパフォーマンスを両立した企業サイト。',
-      category: 'Website',
-    },
-    {
-      title: 'Fitness Tracking App',
-      description: 'React Native で開発したクロスプラットフォームアプリ。',
-      category: 'Mobile App',
-    },
-    {
-      title: 'Design System',
-      description: 'コンポーネントライブラリとデザインガイドライン。',
-      category: 'Design',
-    },
-  ];
-</script>

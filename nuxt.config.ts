@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     },
   },
   tailwindcss: {
-    cssPath: '~/assets/css/tailwind.css',
+    cssPath: '~/assets/scss/main.scss',
     configPath: 'tailwind.config.ts',
     exposeConfig: false,
     config: {},
@@ -38,4 +38,14 @@ export default defineNuxtConfig({
     preference: 'light',
     fallback: 'light',
   },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/assets/scss/_variables.scss" as *;',
+        },
+      },
+    },
+  },
+  css: ['~/assets/scss/main.scss'],
 });
