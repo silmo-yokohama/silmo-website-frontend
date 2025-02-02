@@ -5,23 +5,4 @@
   </div>
 </template>
 
-<style lang="scss">
-  .test-component {
-  padding: 1rem;
-  
-  h1 {
-    color: $primary-color;
-    font-size: 1.5rem;
-    font-weight: bold;
-    
-    @include mq(md) {
-      font-size: 2rem;
-    }
-  }
-  
-  p {
-    color: $secondary-color;
-    margin-top: 0.5rem;
-  }
-}
-</style>
+<style lang="scss"></style>

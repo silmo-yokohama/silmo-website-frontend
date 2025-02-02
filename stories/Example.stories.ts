@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
-import { UiTestComponent } from '#components';
+import UiTestComponent from '@/components/ui/TestComponent.vue';
 /**
  * Exampleコンポーネントのストーリー定義
  *

@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook-vue/nuxt';
+import path from 'path';
 /**
  * Storybookのメイン設定ファイル
  *
@@ -35,6 +36,15 @@ const config: StorybookConfig = {
   },
   docs: {
     autodocs: 'tag',
+  },
+  viteFinal: (config) => {
+    if (config.resolve) {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        '@': path.resolve(__dirname, '../'),
+      };
+    }
+    return config;
   },
 };
 

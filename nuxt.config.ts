@@ -1,6 +1,8 @@
+import path from 'path';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
+  // plugins: [vue()],
   devtools: { enabled: process.env.NUXT_ENV === 'development' },
   modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxtjs/google-fonts'],
   googleFonts: {
@@ -44,6 +46,11 @@ export default defineNuxtConfig({
         scss: {
           additionalData: '@use "@/assets/scss/_variables.scss" as *;',
         },
+      },
+    },
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './'),
       },
     },
   },
