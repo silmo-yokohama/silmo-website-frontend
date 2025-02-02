@@ -57,6 +57,8 @@ export default {
       fontFamily: {
         sans: ['Inter', 'sans-serif', ...defaultTheme.fontFamily.sans],
         mono: ['JetBrains Mono', 'monospace', ...defaultTheme.fontFamily.mono],
+        oswald: ['Oswald', 'sans-serif', ...defaultTheme.fontFamily.sans],
+        zen: ['Zen Kaku Gothic New', 'sans-serif', ...defaultTheme.fontFamily.sans],
       },
       animation: {
         'fade-in': 'fade-in 0.5s ease-in',

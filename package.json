@@ -22,9 +22,8 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@fontsource/inter": "^5.1.1",
-    "@fontsource/jetbrains-mono": "^5.1.2",
     "@nuxtjs/color-mode": "^3.5.2",
+    "@nuxtjs/google-fonts": "^3.2.0",
     "nuxt": "^3.15.4",
     "vue": "latest",
     "vue-router": "latest"

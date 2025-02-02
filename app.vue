@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen">
     <common-header />
-    <main>
+    <main class="font-zen">
       <NuxtPage />
     </main>
   </div>

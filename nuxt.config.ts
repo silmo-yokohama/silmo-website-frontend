@@ -2,8 +2,17 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/storybook', '@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
-  css: ['@fontsource/inter/400.css', '@fontsource/inter/500.css', '@fontsource/inter/600.css', '@fontsource/jetbrains-mono/400.css'],
+  modules: ['@nuxtjs/storybook', '@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxtjs/google-fonts'],
+  googleFonts: {
+    families: {
+      Inter: true,
+      'JetBrains Mono': true,
+      Oswald: {
+        wght: [600],
+      },
+      'Zen Kaku Gothic New': true,
+    },
+  },
   tailwindcss: {
     cssPath: '~/assets/css/tailwind.css',
     configPath: 'tailwind.config.ts',

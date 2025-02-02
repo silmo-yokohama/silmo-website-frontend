@@ -12,11 +12,8 @@
 
       <div class="w-full">
         <div class="max-w-container mx-auto px-4">
-          <h1 class="max-w-[800px] text-6xl">
-            Crafting Digital
-            <span class="text-primary">Experiences</span>
-          </h1>
-          <p class="mt-8 max-w-[600px] text-lg">フロントエンド開発を通じて、美しく機能的なデジタル体験を創造します。</p>
+          <h1 class="max-w-[800px] text-6xl font-oswald">Web <span class="text-primary">Design</span> + <span class="text-secondary">Development</span></h1>
+          <p class="mt-8 max-w-[600px] text-lg">WEBアプリ開発 / WEBサイト制作 / LP制作 / デザイン制作</p>
         </div>
       </div>
     </section>
