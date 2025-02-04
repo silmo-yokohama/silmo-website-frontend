@@ -1,8 +1,16 @@
+import path from 'path';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
-  devtools: { enabled: true },
-  modules: ['@nuxtjs/storybook', '@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxtjs/google-fonts'],
+  runtimeConfig: {
+    public: {
+      appName: process.env.NUXT_PUBLIC_APP_NAME,
+      companyName: process.env.NUXT_PUBLIC_COMPANY_NAME,
+    },
+  },
+  // plugins: [vue()],
+  devtools: { enabled: process.env.NUXT_ENV === 'development' },
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxtjs/google-fonts'],
   googleFonts: {
     families: {
       Inter: true,
@@ -14,7 +22,7 @@ export default defineNuxtConfig({
     },
   },
   tailwindcss: {
-    cssPath: '~/assets/css/tailwind.css',
+    cssPath: '~/assets/scss/main.scss',
     configPath: 'tailwind.config.ts',
     exposeConfig: false,
     config: {},
@@ -35,7 +43,22 @@ export default defineNuxtConfig({
   },
   colorMode: {
     classSuffix: '',
-    preference: 'system',
+    preference: 'light',
     fallback: 'light',
   },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/assets/scss/_variables.scss" as *;',
+        },
+      },
+    },
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './'),
+      },
+    },
+  },
+  css: ['~/assets/scss/main.scss'],
 });

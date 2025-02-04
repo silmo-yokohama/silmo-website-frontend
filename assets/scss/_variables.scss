@@ -1,0 +1,18 @@
+// カラー変数
+$primary-color: #00a197;
+$secondary-color: #f8b62b;
+$dark-color: #0a1017;
+
+// ブレークポイント
+$breakpoints: (
+  'sm': 640px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1280px,
+  '2xl': 1536px,
+);
+
+// その他の共通変数
+$container-max-width: 1200px;
+$section-padding-mobile: 3rem;
+$section-padding-desktop: 6rem;
