@@ -84,6 +84,11 @@
            hover:!border-gray-200 
            hover:!text-gray-500;
   }
+
+  /* トランジション */
+  .t {
+    @apply transition-all duration-300;
+  }
 }
 
 /* コンポーネント

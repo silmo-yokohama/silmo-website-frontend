@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import '@/assets/scss/buttons/index.scss';
+
   const works = [
     {
       title: 'E-commerce Platform',
@@ -43,8 +45,8 @@
 
       <!-- Works & Portfolio Links -->
       <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 flex-1">
-        <common-link to="/works" class="w-full sm:w-60 text-center"> 全ての実績 </common-link>
-        <common-link to="/portfolio" class="w-full sm:w-60 text-center"> 全てのポートフォリオ </common-link>
+        <common-button to="/works" variant="slate" class="relative w-full sm:w-60 text-center"> 実績 </common-button>
+        <common-button to="/portfolio" variant="slate" class="relative w-full sm:w-60 text-center"> ポートフォリオ </common-button>
       </div>
     </common-section>
 
@@ -52,7 +54,7 @@
     <common-section>
       <common-section-title>Get in Touch</common-section-title>
       <p class="mt-4 max-w-[600px] text-lg">新しいプロジェクトのご相談やお問い合わせをお待ちしています。 まずはお気軽にメッセージをお送りください。</p>
-      <common-link class="mt-8" to="/contact"> Contact Me </common-link>
+      <common-button class="mt-8" to="/contact"> Contact Me </common-button>
     </common-section>
   </div>
 </template>

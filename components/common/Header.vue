@@ -20,7 +20,7 @@
 <template>
   <div>
     <!-- ヘッダー（最前面に表示） -->
-    <header class="fixed top-0 left-0 w-full h-[70px] md:h-[80px] border-b border-black/10 dark:border-white/10 bg-[#FAFAFA] dark:bg-dark z-[100]">
+    <header class="t fixed top-0 left-0 w-full h-[70px] md:h-[80px] border-b border-black/10 dark:border-white/10 bg-[#FAFAFA] dark:bg-dark z-[100]">
       <div class="max-w-container mx-auto px-4 h-full flex items-center justify-between">
         <!-- ハンバーガーメニューボタン -->
         <ui-button-hamburger-button :is-menu-open="isMenuOpen" :set-is-menu-open="(state) => (isMenuOpen = state)" />

@@ -12,7 +12,7 @@
 </script>
 
 <template>
-  <div class="min-h-screen">
+  <div class="transition-colors duration-300 min-h-screen">
     <common-header />
     <main class="font-zen">
       <!-- エラーがある場合はエラー表示 -->

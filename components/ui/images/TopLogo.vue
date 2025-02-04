@@ -3,8 +3,12 @@
   import WhiteLogo from '@/assets/images/logos/logo-h-white.png';
 
   const colorMode = useColorMode();
+
+  const logo = computed(() => (colorMode.value !== 'dark' ? BlackLogo : WhiteLogo));
 </script>
 
 <template>
-  <img class="w-24 md:w-28" :src="colorMode.value !== 'dark' ? BlackLogo : WhiteLogo" alt="Top Logo" />
+  <client-only>
+    <img class="w-24 md:w-28" :src="logo" alt="Top Logo" />
+  </client-only>
 </template>

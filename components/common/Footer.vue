@@ -6,7 +6,7 @@
 </script>
 <template>
   <!-- Footer -->
-  <footer class="py-8 border-t border-black/10 dark:border-white/10 bg-[#FAFAFA] dark:bg-dark">
+  <footer class="t py-8 border-t border-black/10 dark:border-white/10 bg-[#FAFAFA] dark:bg-dark">
     <div class="max-w-container mx-auto px-4">
       <div class="flex flex-col md:flex-row justify-between items-center gap-4">
         <p class="text-sm text-black/60 dark:text-white/60">© {{ `${currentYear} ${appName}` }} . All rights reserved.</p>
