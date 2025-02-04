@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import type { ColorName } from '~/constants/tagColors';
+  import type { TagClassName } from '@/types/tag';
 
   const props = defineProps<{
     to: string;
@@ -8,22 +8,22 @@
     category: string;
   }>();
 
-  const tagInfo = [
+  const tagInfo: { name: string; color: TagClassName }[] = [
     {
       name: 'Web App',
-      color: 'blue',
+      color: 'tag-indigo',
     },
     {
       name: 'Website',
-      color: 'green',
+      color: 'tag-emerald',
     },
     {
       name: 'Mobile App',
-      color: 'purple',
+      color: 'tag-purple',
     },
     {
       name: 'Design',
-      color: 'orange',
+      color: 'tag-amber',
     },
   ];
 
@@ -33,7 +33,7 @@
 <template>
   <nuxt-link :to="to" class="group border border-black/10 dark:border-white/10 rounded-2xl p-6 hover:border-primary transition-colors duration-200">
     <div class="flex items-center gap-2">
-      <common-tag :color-name="tag?.color as ColorName">
+      <common-tag :tag-color-class="tag?.color">
         {{ tag?.name }}
       </common-tag>
     </div>

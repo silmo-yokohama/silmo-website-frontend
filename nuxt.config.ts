@@ -2,6 +2,12 @@ import path from 'path';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
+  runtimeConfig: {
+    public: {
+      appName: process.env.NUXT_PUBLIC_APP_NAME,
+      companyName: process.env.NUXT_PUBLIC_COMPANY_NAME,
+    },
+  },
   // plugins: [vue()],
   devtools: { enabled: process.env.NUXT_ENV === 'development' },
   modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxtjs/google-fonts'],

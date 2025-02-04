@@ -1,19 +1,15 @@
 <script setup lang="ts">
-  /**
-   * タグコンポーネント
-   * @description 色付きの背景を持つタグを表示するコンポーネント
-   */
-  type ColorName = 'red' | 'blue' | 'green' | 'yellow' | 'gray' | 'purple' | 'slate';
+  import type { TagClassName } from '~/types/tag';
 
   const props = defineProps<{
-    colorName: ColorName;
+    tagColorClass?: TagClassName;
   }>();
 
-  const tagColor = computed(() => `tag-${props.colorName}`);
+  const tagColor = computed(() => props.tagColorClass || 'tag-emerald');
 </script>
 
 <template>
-  <span :class="`px-2 py-1 text-xs rounded-md ${tagColor}`">
+  <span :class="`px-2 py-1 text-xs rounded-md  ${tagColor}`">
     <slot />
   </span>
 </template>
