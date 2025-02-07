@@ -1,5 +1,6 @@
-import type { StorybookConfig } from '@storybook-vue/nuxt';
+import type { StorybookConfig } from '@storybook/vue3-vite';
 import path from 'path';
+
 /**
  * Storybookのメイン設定ファイル
  *
@@ -11,39 +12,45 @@ import path from 'path';
  * @typedef {import('@storybook/types').StorybookConfig} StorybookConfig
  */
 const config: StorybookConfig = {
-  framework: {
-    name: '@storybook-vue/nuxt',
-    options: {},
-  },
-  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)', '../components/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@storybook/addon-themes',
-    '@storybook/addon-a11y',
     {
       name: '@storybook/addon-styling',
-      options: {},
+      options: {
+        postCss: true,
+      },
     },
   ],
-  core: {
-    builder: '@storybook/builder-vite',
-  },
-  typescript: {
-    skipBabel: true,
-    check: false,
+  framework: {
+    name: '@storybook-vue/nuxt',
+    options: {},
   },
   docs: {
     autodocs: 'tag',
   },
-  viteFinal: (config) => {
+  viteFinal: async (config) => {
     if (config.resolve) {
       config.resolve.alias = {
         ...config.resolve.alias,
         '@': path.resolve(__dirname, '../'),
+        '~': path.resolve(__dirname, '../'),
       };
     }
+
+    // SCSSの設定を追加
+    if (!config.css) {
+      config.css = {};
+    }
+    config.css.preprocessorOptions = {
+      scss: {
+        additionalData: `@use "@/assets/scss/_variables.scss" as *;`,
+      },
+    };
+
     return config;
   },
 };

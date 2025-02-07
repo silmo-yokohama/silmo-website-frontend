@@ -1,4 +1,6 @@
-import type { Preview } from '@storybook-vue/nuxt';
+import type { Preview } from '@storybook/vue3';
+import { withThemeByClassName } from '@storybook/addon-themes';
+import '../assets/scss/main.scss';
 
 /**
  * Storybookのプレビュー設定ファイル
@@ -18,7 +20,7 @@ const preview: Preview = {
     controls: {
       matchers: {
         color: /(background|color)$/i,
-        date: /Date$/,
+        date: /Date$/i,
       },
     },
     // ビューポートの設定
@@ -57,6 +59,15 @@ const preview: Preview = {
       },
     },
   },
+  decorators: [
+    withThemeByClassName({
+      themes: {
+        light: '',
+        dark: 'dark',
+      },
+      defaultTheme: 'light',
+    }),
+  ],
 };
 
 export default preview;

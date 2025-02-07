@@ -1,0 +1,233 @@
+@use '../../_variables.scss' as *;
+
+/**
+ * ボタンコンポーネント
+ *
+ * @description
+ * 各種ボタンのベーススタイルとバリエーションを定義
+ * - ノーマル: デフォルトの装飾を抑えたボタン
+ * - プライマリー: メインアクションを示すボタン
+ * - セカンダリー: 補助的なアクションを示すボタン
+ * - アウトライン: 境界線のみのボタン
+ * - ゴースト: 背景を持たない軽量なボタン
+ */
+
+/* ベースボタン
+   ========================================================================== */
+.btn {
+  @apply inline-block 
+         border 
+         dark:border-white/10 
+         rounded-lg 
+         px-6 
+         py-3 
+         transition-colors 
+         duration-200 
+         ease-in-out
+         cursor-pointer
+         font-medium
+         select-none;
+
+  /* ホバー時 */
+  &:hover:not(:disabled) {
+    @apply border-primary 
+           text-primary;
+  }
+
+  /* フォーカス時 */
+  &:focus-visible {
+    @apply outline-none 
+           ring-2 
+           ring-primary 
+           ring-offset-2 
+           ring-offset-white 
+           dark:ring-offset-dark;
+  }
+
+  /* アクティブ時 */
+  &:active:not(:disabled) {
+    @apply bg-black/5 
+           dark:bg-white/5;
+  }
+
+  /* 無効時 */
+  &:disabled {
+    @apply opacity-50 
+           cursor-not-allowed;
+  }
+}
+
+/* プライマリーボタン
+   ========================================================================== */
+.btn-primary {
+  @apply btn
+         bg-primary 
+         text-white 
+         border-primary;
+
+  &:hover:not(:disabled) {
+    @apply bg-primary/85 
+           border-primary/85 
+           text-white;
+  }
+}
+
+/* セカンダリーボタン
+   ========================================================================== */
+.btn-secondary {
+  @apply btn
+         bg-secondary 
+         text-slate-100 
+         border-secondary;
+
+  &:hover:not(:disabled) {
+    @apply bg-secondary/85 
+           border-secondary/85 
+           text-dark;
+  }
+}
+
+/* アウトラインボタン
+   ========================================================================== */
+.btn-outline {
+  @apply btn
+         border-2
+         border-primary
+         text-primary
+         bg-transparent;
+
+  &:hover:not(:disabled) {
+    @apply bg-primary/5;
+  }
+}
+
+/* ゴーストボタン
+   ========================================================================== */
+.btn-ghost {
+  @apply btn
+         border-transparent
+         bg-transparent
+         text-current;
+
+  &:hover:not(:disabled) {
+    @apply bg-black/[0.03] 
+           dark:bg-white/[0.03] 
+           border-transparent;
+  }
+}
+
+/* サイズバリエーション
+   ========================================================================== */
+.btn-sm {
+  @apply px-4 py-2 text-sm;
+}
+
+.btn-lg {
+  @apply px-8 py-4 text-lg;
+}
+
+/* アイコン付きボタン用の調整
+   ========================================================================== */
+.btn-icon {
+  @apply inline-flex 
+         items-center 
+         gap-2;
+
+  svg {
+    @apply w-5 h-5;
+  }
+}
+
+/* リンクボタン
+   ========================================================================== */
+.btn-link {
+  @apply btn
+         border-none
+         px-2
+         py-1
+         text-primary
+         bg-transparent
+         underline
+         underline-offset-4
+         decoration-1
+         hover:decoration-2;
+
+  /* ホバー時 */
+  &:hover:not(:disabled) {
+    @apply text-primary/80
+           border-none;
+  }
+
+  /* アクティブ時 */
+  &:active:not(:disabled) {
+    @apply text-primary/70
+           bg-transparent;
+  }
+
+  /* ダークモード */
+  &.dark {
+    @apply text-primary/90
+           hover:text-primary/70;
+  }
+
+  /* 無効時 */
+  &:disabled {
+    @apply no-underline
+           opacity-50;
+  }
+}
+
+/* スレートボタン
+   ========================================================================== */
+.btn-slate {
+  @apply btn
+         bg-slate-100 
+         text-slate-700
+         border-slate-200;
+
+  /* ホバー時（ライトモード） */
+  &:hover:not(:disabled) {
+    @apply bg-slate-200
+           border-slate-300
+           text-slate-800;
+  }
+
+  /* アクティブ時（ライトモード） */
+  &:active:not(:disabled) {
+    @apply bg-slate-300
+           border-slate-400
+           text-slate-900;
+  }
+
+  /* ダークモード */
+  &.dark,
+  :is(.dark &) {
+    @apply bg-slate-700
+           text-slate-100
+           border-slate-600;
+
+    /* ホバー時（ダークモード） */
+    &:hover:not(:disabled) {
+      @apply bg-slate-600
+             border-slate-500
+             text-white;
+    }
+
+    /* アクティブ時（ダークモード） */
+    &:active:not(:disabled) {
+      @apply bg-slate-500
+             border-slate-400;
+    }
+  }
+
+  /* 無効時 */
+  &:disabled {
+    @apply opacity-50;
+
+    /* ダークモード時の無効状態 */
+    &.dark,
+    :is(.dark &) {
+      @apply opacity-40;
+    }
+  }
+}
