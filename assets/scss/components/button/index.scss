@@ -30,8 +30,7 @@
 
   /* ホバー時 */
   &:hover:not(:disabled) {
-    @apply border-primary 
-           text-primary;
+    @apply border-primary;
   }
 
   /* フォーカス時 */

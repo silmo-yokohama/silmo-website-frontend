@@ -26,7 +26,12 @@
         <ui-button-hamburger-button :is-menu-open="isMenuOpen" :set-is-menu-open="(state) => (isMenuOpen = state)" />
 
         <!-- ロゴ（中央寄せ） -->
-        <nuxt-link to="/" class="absolute left-1/2 -translate-x-1/2 text-xl font-medium"> <ui-images-top-logo /> </nuxt-link>
+        <h1 class="absolute left-1/2 -translate-x-1/2 text-xl font-medium">
+          <nuxt-link to="/" class="">
+            <span class="sr-only">SilMo</span>
+            <ui-images-top-logo />
+          </nuxt-link>
+        </h1>
 
         <!-- カラーモードトグル -->
         <ui-button-theme-button />

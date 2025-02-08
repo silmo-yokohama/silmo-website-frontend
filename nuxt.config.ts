@@ -67,4 +67,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  storybook: {
+    enabled: process.env.NUXT_STORYBOOK === 'true',
+  },
 });

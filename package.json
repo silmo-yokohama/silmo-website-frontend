@@ -19,8 +19,7 @@
     "story": "clear && storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepare": "husky",
-    "type-check": "vue-tsc --noEmit",
-    "storybook": "storybook dev -p 6006"
+    "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
     "@nuxtjs/color-mode": "^3.5.2",
