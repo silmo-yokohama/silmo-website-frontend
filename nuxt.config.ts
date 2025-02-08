@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   },
   // plugins: [vue()],
   devtools: { enabled: process.env.NUXT_ENV === 'development' },
-  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxtjs/google-fonts'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxtjs/google-fonts', '@nuxtjs/storybook'],
   googleFonts: {
     families: {
       Inter: true,
@@ -61,4 +61,13 @@ export default defineNuxtConfig({
     },
   },
   css: ['~/assets/scss/main.scss'],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+  storybook: {
+    enabled: process.env.NUXT_STORYBOOK === 'true',
+  },
 });

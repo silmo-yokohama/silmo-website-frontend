@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  import '@/assets/scss/buttons/index.scss';
-
   const works = [
     {
       title: 'E-commerce Platform',

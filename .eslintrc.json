@@ -9,11 +9,16 @@
   },
   "plugins": ["@typescript-eslint"],
   "rules": {
-    // Vue関連
+    // Vue関連のルール
+    // コンポーネント名を複数単語にする必要がない
     "vue/multi-word-component-names": "off",
+    // テンプレートのルート要素が複数あることを許可
     "vue/no-multiple-template-root": "off",
+    // propsのデフォルト値を必須としない
     "vue/require-default-prop": "off",
+    // v-htmlディレクティブの使用を許可
     "vue/no-v-html": "off",
+    // テンプレート内のコンポーネント名はケバブケースを強制
     "vue/component-name-in-template-casing": [
       "error",
       "kebab-case",
@@ -23,7 +28,8 @@
       }
     ],
 
-    // TypeScript関連
+    // TypeScript関連のルール
+    // 未使用の変数を禁止（ただし_で始まる変数は無視）
     "@typescript-eslint/no-unused-vars": [
       "error",
       {
@@ -31,17 +37,25 @@
         "varsIgnorePattern": "^_"
       }
     ],
+    // any型の使用を警告
     "@typescript-eslint/no-explicit-any": "warn",
 
     // 一般的なルール
+    // console.logの使用を警告（warnとerrorは許可）
     "no-console": ["warn", { "allow": ["warn", "error"] }],
+    // debuggerの使用を警告
     "no-debugger": "warn",
+    // 通常の未使用変数チェックを無効化（TypeScriptのルールを使用）
     "no-unused-vars": "off",
+    // キャメルケースを強制（ただしプロパティ名は除外）
     "camelcase": ["error", { "properties": "never" }],
 
-    // コードスタイル
+    // コードスタイルのルール
+    // アロー関数の本体を可能な限り省略記法に
     "arrow-body-style": ["error", "as-needed"],
+    // すべての制御文でブロック（中括弧）を強制
     "curly": ["error", "all"],
+    // 未使用の式を禁止（ショートサーキットと三項演算子は許可）
     "no-unused-expressions": [
       "error",
       {
@@ -51,9 +65,13 @@
     ],
 
     // 論理演算子の最適化ルール
+    // 不要な二重否定を禁止
     "no-extra-boolean-cast": "error",
+    // 常に同じ結果となる二項演算を禁止
     "no-constant-binary-expression": "error",
+    // 常に真偽が決まっている条件式を禁止（ループは除外）
     "no-constant-condition": ["error", { "checkLoops": false }],
+    // 不要な括弧を禁止（ネストされた二項演算とアロー関数の条件式は除外）
     "no-extra-parens": [
       "error",
       "all",
@@ -62,10 +80,12 @@
         "enforceForArrowConditionals": false
       }
     ],
+    // 不要な三項演算子を禁止（デフォルト代入は許可）
     "no-unneeded-ternary": ["error", { "defaultAssignment": false }]
   },
   "overrides": [
     {
+      // Vueファイルでは未定義変数のチェックを無効化
       "files": ["*.vue"],
       "rules": {
         "no-undef": "off"
