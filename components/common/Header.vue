@@ -2,6 +2,7 @@
   const isMenuOpen = ref(false);
 
   const navItems = [
+    { label: 'Home', path: '/' },
     { label: 'Profile', path: '/profile' },
     { label: 'Works', path: '/works' },
     { label: 'Portfolio', path: '/portfolio' },

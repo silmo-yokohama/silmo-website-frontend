@@ -153,24 +153,24 @@
   });
 </script>
 <template>
-  <common-page-title
-    title="Contact"
-    subtitle="お問い合わせ"
-    description="新しいプロジェクトのご相談やお問い合わせをお待ちしています。 以下のフォームからメッセージをお送りください。"
-  />
-  <layouts-content-wrapper>
-    <!-- 注意事項（よりシンプルに） -->
-    <ui-block-notice
-      title="お問い合わせの前に"
-      variant="info"
-      :list="[
-        '返信は平日の営業時間内（9:00-18:00）となります',
-        '内容によっては回答に時間を要する場合がございます',
-        '携帯電話のメールアドレスをご利用の場合は、ドメイン指定受信を設定されている可能性がありますのでご注意ください',
-      ]"
+  <div>
+    <common-page-title
+      title="Contact"
+      subtitle="お問い合わせ"
+      description="新しいプロジェクトのご相談やお問い合わせをお待ちしています。 以下のフォームからメッセージをお送りください。"
     />
+    <layouts-content-wrapper>
+      <!-- 注意事項（よりシンプルに） -->
+      <ui-block-notice
+        title="お問い合わせの前に"
+        variant="info"
+        :list="[
+          '返信は平日の営業時間内（9:00-18:00）となります',
+          '内容によっては回答に時間を要する場合がございます',
+          '携帯電話のメールアドレスをご利用の場合は、ドメイン指定受信を設定されている可能性がありますのでご注意ください',
+        ]"
+      />
 
-    <client-only>
       <!-- フォーム -->
       <form class="space-y-6" @submit.prevent="handleSubmit">
         <!-- お名前 -->
@@ -221,15 +221,15 @@
           </common-button>
         </div>
       </form>
-    </client-only>
 
-    <!-- 送信完了メッセージ -->
-    <div v-if="showSuccess" class="mt-6">
-      <div
-        class="p-4 bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200 rounded-lg text-center text-sm border border-green-100 dark:border-green-900/50"
-      >
-        メッセージを送信しました。確認次第、返信させていただきます。
+      <!-- 送信完了メッセージ -->
+      <div v-if="showSuccess" class="mt-6">
+        <div
+          class="p-4 bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200 rounded-lg text-center text-sm border border-green-100 dark:border-green-900/50"
+        >
+          メッセージを送信しました。確認次第、返信させていただきます。
+        </div>
       </div>
-    </div>
-  </layouts-content-wrapper>
+    </layouts-content-wrapper>
+  </div>
 </template>
