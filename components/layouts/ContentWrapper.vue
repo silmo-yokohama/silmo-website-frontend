@@ -10,12 +10,19 @@
   defineOptions({
     name: 'ContentWrapper',
   });
+
+  const props = defineProps<{
+    class?: string;
+    contentWidth?: string;
+  }>();
+
+  const mergedClasses = mergeClassNames(props.class || '', 'pt-[60px] md:pt-[50px]');
 </script>
 
 <template>
-  <div class="pt-[60px] md:pt-[50px]">
+  <div :class="mergedClasses">
     <div class="pb-8 md:pb-12">
-      <div class="max-w-[640px] mx-auto px-6">
+      <div :class="contentWidth || 'max-w-[780px]'" class="mx-auto px-6">
         <slot />
       </div>
     </div>

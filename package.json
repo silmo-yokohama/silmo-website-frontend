@@ -22,6 +22,7 @@
     "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
+    "@nuxt/image": "^1.9.0",
     "@nuxtjs/color-mode": "^3.5.2",
     "@nuxtjs/google-fonts": "^3.2.0",
     "clsx": "^2.1.1",

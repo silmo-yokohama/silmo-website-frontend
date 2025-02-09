@@ -1,4 +1,5 @@
 import path from 'path';
+const apiBase = process.env.NUXT_PUBLIC_API_BASE as string;
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
@@ -6,11 +7,12 @@ export default defineNuxtConfig({
     public: {
       appName: process.env.NUXT_PUBLIC_APP_NAME,
       companyName: process.env.NUXT_PUBLIC_COMPANY_NAME,
+      apiBase,
     },
   },
   // plugins: [vue()],
   devtools: { enabled: process.env.NUXT_ENV === 'development' },
-  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxtjs/google-fonts', '@nuxtjs/storybook'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxtjs/google-fonts', '@nuxtjs/storybook', '@nuxt/image'],
   googleFonts: {
     families: {
       Inter: true,
@@ -69,5 +71,8 @@ export default defineNuxtConfig({
   },
   storybook: {
     enabled: process.env.NUXT_STORYBOOK === 'true',
+  },
+  image: {
+    domains: ['https://images.unsplash.com/', apiBase],
   },
 });

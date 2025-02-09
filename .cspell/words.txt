@@ -4,3 +4,5 @@ nuxtjs
 autodocs
 viewports
 lucide
+GSAP
+gsap

@@ -55,6 +55,7 @@
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
   ],
+  "tailwindCSS.classAttributes": ["class", "className", "ngClass", ".*Classes"],
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "files.exclude": {
     "**/.git": true,
