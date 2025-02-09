@@ -15,7 +15,7 @@
 <template>
   <div class="pt-[60px] md:pt-[50px]">
     <div class="pb-8 md:pb-12">
-      <div class="max-w-[640px] mx-auto px-6">
+      <div class="max-w-[780px] mx-auto px-6">
         <slot />
       </div>
     </div>
