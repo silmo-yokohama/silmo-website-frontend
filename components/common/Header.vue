@@ -9,6 +9,13 @@
     { label: 'Contact', path: '/contact' },
   ];
 
+  // Transitionのための遅延
+  const delayCloseMenu = () => {
+    setTimeout(() => {
+      isMenuOpen.value = false;
+    }, 200);
+  };
+
   // メニューが開いているときはスクロールを無効化
   watch(isMenuOpen, (value) => {
     if (value) {
@@ -44,12 +51,11 @@
       <!-- メインナビゲーション -->
       <ui-menu-list>
         <nuxt-link
-          v-for="(item, index) in navItems"
+          v-for="item in navItems"
           :key="item.path"
           :to="item.path"
-          :style="{ transitionDelay: `${index * 100}ms` }"
-          class="block text-xl hover:text-primary transition-colors duration-200"
-          @click="isMenuOpen = false"
+          class="block text-xl hover:text-primary transition-all duration-200"
+          @click="delayCloseMenu"
         >
           {{ item.label }}
         </nuxt-link>
