@@ -1,0 +1,124 @@
+/**
+ * 記事コンテンツのスタイル定義
+ * 
+ * @description
+ * ブログ記事やポートフォリオ記事など、長文コンテンツのスタイリングを定義します。
+ * Tailwindのユーティリティクラスと組み合わせて使用します。
+ * 
+ * @note
+ * - 見出し、段落、リスト、引用などの基本的な記事要素のスタイルを定義
+ * - レスポンシブ対応
+ * - ダークモード対応
+ */
+
+@layer components {
+  .article {
+    /* 見出し */
+    h2 {
+      @apply text-2xl md:text-3xl font-bold mt-12 mb-6 pb-2 border-b-2 border-gray-200 dark:border-gray-700;
+
+      &::before {
+        content: '#';
+        @apply text-primary mr-2;
+      }
+    }
+
+    h3 {
+      @apply text-xl md:text-2xl font-semibold mt-8 mb-4;
+    }
+
+    /* 段落 */
+    p {
+      @apply text-base md:text-lg leading-relaxed mb-6 text-gray-700 dark:text-gray-300;
+
+      /* インラインの強調 */
+      strong {
+        @apply font-bold text-gray-900 dark:text-gray-100;
+      }
+
+      em {
+        @apply italic text-gray-800 dark:text-gray-200;
+      }
+
+      code {
+        @apply px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded font-mono text-sm;
+      }
+    }
+
+    /* リスト */
+    ul {
+      @apply mb-2 p-3 rounded-lg bg-gray-200 dark:bg-gray-800/50;
+
+      li {
+        @apply flex items-start gap-3 p-3;
+
+        &::before {
+          content: '';
+          @apply w-5 h-5 mt-0.5 flex-shrink-0;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+
+    ol {
+      @apply mb-6 p-3 list-none  bg-gray-200 dark:bg-gray-800/50 rounded-lg;
+      counter-reset: custom-counter;
+
+      li {
+        @apply flex items-start gap-3 p-3;
+        counter-increment: custom-counter;
+
+        &::before {
+          content: counter(custom-counter);
+          @apply w-6 h-6 flex-shrink-0 flex items-center justify-center rounded-full bg-primary text-white text-sm font-medium;
+        }
+      }
+    }
+
+    li {
+      @apply text-base md:text-lg text-gray-700 dark:text-gray-300;
+    }
+
+    /* 引用 */
+    blockquote {
+      @apply pl-4 my-6 border-l-4 border-gray-300 dark:border-gray-600;
+
+      p {
+        @apply italic text-gray-600 dark:text-gray-400;
+      }
+    }
+
+    /* 画像 */
+    figure {
+      @apply my-8;
+
+      img {
+        @apply w-full rounded-lg shadow-lg;
+      }
+
+      figcaption {
+        @apply mt-2 text-sm text-center text-gray-500 dark:text-gray-400;
+      }
+    }
+
+    /* リンク */
+    a {
+      @apply text-blue-600 dark:text-blue-400 hover:underline;
+
+      &[target='_blank'] {
+        @apply after:content-['_↗'] after:inline-block;
+      }
+    }
+
+    /* セクション間のスペーシング */
+    section {
+      @apply mb-12;
+
+      &:last-child {
+        @apply mb-0;
+      }
+    }
+  }
+}

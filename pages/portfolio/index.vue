@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import type { Project } from '~/types/project';
 
-  const works: Project[] = [
+  const portfolios: Project[] = [
     {
       id: 1,
       title: 'ECサイトリニューアル',
@@ -56,8 +56,8 @@
     <common-page-title title="Portfolio" subtitle="ポートフォリオ" description="学習や趣味で作成したものをまとめています。" />
     <layouts-content-wrapper content-width="max-w-[1000px]">
       <ui-card-list>
-        <nuxt-link v-for="work in works" :key="work.id" :to="`/works/${work.id}`">
-          <ui-card-item :project="work" />
+        <nuxt-link v-for="portfolio in portfolios" :key="portfolio.id" :to="`/portfolio/${portfolio.id}`">
+          <ui-card-item :project="portfolio" />
         </nuxt-link>
       </ui-card-list>
     </layouts-content-wrapper>
