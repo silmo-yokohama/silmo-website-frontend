@@ -3,7 +3,7 @@
   import type { Project } from '~/types/project';
 
   const route = useRoute();
-  const _id = computed(() => route.params.id);
+  const _id = computed(() => Number(route.params.id));
 
   const data: Project = {
     id: 4,
@@ -16,6 +16,13 @@
       { id: 3, name: 'Design System' },
     ],
   };
+
+  if (_id.value > 50) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'Not Found',
+    });
+  }
 </script>
 
 <template>
