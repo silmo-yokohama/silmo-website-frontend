@@ -45,49 +45,7 @@
     }))
   );
 
-  // スキルデータは現状維持
-  const skills = [
-    {
-      title: 'フロントエンド',
-      items: [
-        { name: 'Semantic HTML5', level: 90 },
-        { name: 'CSS3', level: 80 },
-        { name: 'Tailwind CSS', level: 80 },
-        { name: 'TypeScript', level: 90 },
-        { name: 'Vue 3.x~(Nuxt3)', level: 85 },
-        { name: 'React 16.x~(Next.js 13.x)', level: 70 },
-        { name: 'jQuery', level: 90 },
-      ],
-    },
-    {
-      title: 'バックエンド',
-      items: [
-        { name: 'Laravel 9.x~', level: 70 },
-        { name: 'WordPress 5.x~', level: 90 },
-        { name: 'Node.js', level: 50 },
-        { name: 'Go', level: 40 },
-      ],
-    },
-    {
-      title: '環境など',
-      items: [
-        { name: 'Windows10~', level: 90 },
-        { name: 'Mac', level: 70 },
-        { name: 'Linux', level: 50 },
-        { name: 'AWS', level: 80 },
-        { name: 'GCP', level: 30 },
-        { name: 'Docker', level: 50 },
-      ],
-    },
-    {
-      title: 'その他',
-      items: [
-        { name: 'Git', level: 85 },
-        { name: 'Figma', level: 25 },
-        { name: 'スクラム開発', level: 80 },
-      ],
-    },
-  ];
+  const skills = computed(() => profileData.value.skills);
 </script>
 <template>
   <div>
@@ -159,10 +117,10 @@
             <div v-for="(category, index) in skills" :key="index">
               <h3 class="text-xl font-semibold mb-6 flex items-center gap-2 text-primary">
                 <code-xml class="w-5 h-5" />
-                {{ category.title }}
+                {{ category.name }}
               </h3>
               <div class="space-y-4">
-                <div v-for="skill in category.items" :key="skill.name" class="relative">
+                <div v-for="skill in category.children" :key="skill.name" class="relative">
                   <div class="flex justify-between mb-1">
                     <span class="text-base font-semibold">{{ skill.name }}</span>
                     <span class="text-sm text-black/60 dark:text-white/60">{{ skill.level }}%</span>

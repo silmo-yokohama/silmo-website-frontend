@@ -29,6 +29,26 @@ export interface History {
 }
 
 /**
+ * スキル詳細情報の型定義
+ */
+export interface SkillDetail {
+  id: number;
+  name: string;
+  slug: string;
+  level: string;
+}
+
+/**
+ * スキルカテゴリの型定義
+ */
+export interface Skill {
+  id: number;
+  name: string;
+  slug: string;
+  children: SkillDetail[];
+}
+
+/**
  * プロフィール情報の型定義
  */
 export interface ProfileData {
@@ -37,6 +57,7 @@ export interface ProfileData {
   hobbies: Hobby[];
   businessContents: BusinessContent[];
   histories: History[];
+  skills: Skill[];
 }
 
 /**
