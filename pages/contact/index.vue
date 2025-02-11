@@ -16,8 +16,14 @@
   import { FORM_ERROR_MESSAGES } from '~/constants/errors';
   import type { ContactForm } from '~/types/form';
 
-  definePageMeta({
-    layout: 'default',
+  const config = useRuntimeConfig();
+  const pageTitle = `お問い合わせ | ${config.public.companyName}`;
+  useSeoMeta({
+    title: pageTitle,
+    keywords: 'フロントエンド開発, バックエンド開発, フリーランスエンジニア, 神奈川, 東京, 横浜, WordPress ,Vue ,React, Laravel, Next.js, Nuxt3, Go',
+    ogTitle: pageTitle,
+    twitterTitle: pageTitle,
+    twitterImage: 'http://wp.silmo.jp/wp-content/uploads/2025/02/silmo.logo-01.png',
   });
 
   const form = reactive<ContactForm>({

@@ -1,5 +1,7 @@
 import path from 'path';
 const apiBase = process.env.NUXT_PUBLIC_API_BASE as string;
+const apiEndpoint = `${apiBase}${process.env.NUXT_PUBLIC_API_NAMESPACE as string}`;
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
@@ -8,6 +10,7 @@ export default defineNuxtConfig({
       appName: process.env.NUXT_PUBLIC_APP_NAME,
       companyName: process.env.NUXT_PUBLIC_COMPANY_NAME,
       apiBase,
+      apiEndpoint,
     },
   },
   // plugins: [vue()],

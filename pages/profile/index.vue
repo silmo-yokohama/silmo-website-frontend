@@ -1,13 +1,51 @@
 <script setup lang="ts">
   import { CodeXml, UserRoundPen, Pickaxe, Guitar } from 'lucide-vue-next';
-  const personal = {
-    hobbies: ['写真撮影（風景・スナップ）', 'ピアノ演奏', 'カフェ巡り', '読書（技術書・小説）', 'ハイキング'],
-    works: ['フロントエンド開発', 'バックエンド開発', 'WordPress', 'ホームページ制作'],
-    favoriteQuote: {
-      text: '完璧を目指すよりも、まず行動することから始めよう',
-      author: 'Walt Disney',
-    },
-  };
+  import type { ProfileApiResponse } from '~/types/api/profile';
+
+  const config = useRuntimeConfig();
+  const pageTitle = `SilMoについて | ${config.public.companyName}`;
+  useSeoMeta({
+    title: pageTitle,
+    keywords: 'フロントエンド開発, バックエンド開発, フリーランスエンジニア, 神奈川, 東京, 横浜, WordPress ,Vue ,React, Laravel, Next.js, Nuxt3, Go',
+    ogTitle: pageTitle,
+    twitterTitle: pageTitle,
+    twitterImage: 'http://wp.silmo.jp/wp-content/uploads/2025/02/silmo.logo-01.png',
+  });
+
+  // APIからプロフィールデータを取得（SSRを強制）
+  const { data: profileResponse } = await useFetch<ProfileApiResponse>(`${config.public.apiEndpoint}/profile`, {
+    key: 'profile-data',
+    server: true, // サーバーサイドでのみデータ取得を行う
+    cache: 'no-cache', // キャッシュを無効化
+  });
+
+  // エラーレスポンスの場合はエラーを投げる
+  if (!profileResponse.value || 'error' in profileResponse.value) {
+    throw createError({
+      statusCode: profileResponse.value?.statusCode ?? 500,
+      message: profileResponse.value?.error ?? 'データの取得に失敗しました',
+    });
+  }
+
+  const profileData = ref(profileResponse.value.data); // refで反応性を持たせる
+
+  // APIから取得したデータを元にpersonalオブジェクトを構築
+  const personal = computed(() => ({
+    hobbies: profileData.value.hobbies.map((h) => h.hobby),
+    works: profileData.value.businessContents.map((b) => b.businessContent),
+  }));
+
+  // 経歴データの変換
+  const experience = computed(() =>
+    profileData.value.histories.map((history) => ({
+      period: `${history.fromDate} - ${history.toDate === 'present' ? '現在' : history.toDate}`,
+      title: history.position,
+      company: history.company,
+      description: history.description.replace(/\r\n/g, '\n'),
+    }))
+  );
+
+  // スキルデータは現状維持
   const skills = [
     {
       title: 'フロントエンド',
@@ -48,28 +86,6 @@
         { name: 'Figma', level: 25 },
         { name: 'スクラム開発', level: 80 },
       ],
-    },
-  ];
-
-  const experience = [
-    {
-      period: '2022年4月 - 現在',
-      title: 'シニアフロントエンドエンジニア',
-      company: '株式会社テックイノベーション',
-      description:
-        'プロジェクトリーダーとして、大規模Webアプリケーションの設計・開発を担当。Vue.jsとTypeScriptを用いたフロントエンド開発、およびチームマネジメントを行う。',
-    },
-    {
-      period: '2020年4月 - 2022年3月',
-      title: 'フロントエンドエンジニア',
-      company: '株式会社ウェブソリューションズ',
-      description: 'React.jsを使用したSPAの開発、既存システムのモダン化プロジェクトに従事。パフォーマンス最適化とアクセシビリティ改善を実現。',
-    },
-    {
-      period: '2018年4月 - 2020年3月',
-      title: 'Webエンジニア',
-      company: '株式会社テックスタート',
-      description: 'スタートアップ企業にてフルスタックエンジニアとして、新規サービスの開発に携わる。フロントエンド開発を中心に、バックエンド開発も担当。',
     },
   ];
 </script>
